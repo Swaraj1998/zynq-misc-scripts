@@ -64,6 +64,13 @@ if __name__ == "__main__":
         else:
             print('Invalid register!')
 
+    elif sys.argv[1] == 'f2p':
+        val = read(0xf880b01c, 1)
+        val |= read(0xf880b020, 1) << 8
+        val |= read(0xf880b024, 1) << 16
+        val |= read(0xf880b028, 1) << 24
+        print('0x{:08x}'.format(val))
+
     elif sys.argv[1][:3] == 'f2p':
         reg = int(sys.argv[1][3])
         if reg == 0:
